@@ -611,10 +611,10 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
+  if (number < 0) return 0;
   const arr = Array.from({ length: number + 1 }, (_, i) => i);
-  return arr.filter((_, index) => index % 2 !== 0).length;
+  return arr.filter((num) => num % 2 !== 0).length;
 }
-
 module.exports = {
   getRectangleArea,
   getCircleCircumference,
