@@ -258,8 +258,14 @@ function getCube(num) {
  *   10 => 55
  */
 function getFibonacciNumber(index) {
-  if (index === 0 || index === 1) return index;
-  return getFibonacciNumber(index - 1) + getFibonacciNumber(index - 2); // F(n)=F(n−1)+F(n−2) для 𝑛 ≥ 2
+  if (index === 0) return 0;
+  if (index === 1) return 1;
+  if (index === 2) return 1;
+  const arr = [0, 1, 1];
+  for (let i = 3; i <= index; i += 1) {
+    arr.push(arr[i - 1] + arr[i - 2]);
+  }
+  return arr[index];
 }
 
 /**
@@ -611,10 +617,10 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  if (number < 0) return 0;
-  const arr = Array.from({ length: number + 1 }, (_, i) => i);
+  const arr = Array.from({ length: Math.abs(number) + 1 }, (_, i) => i);
   return arr.filter((num) => num % 2 !== 0).length;
 }
+
 module.exports = {
   getRectangleArea,
   getCircleCircumference,
